@@ -15,17 +15,24 @@ command1 = 'display current'
 fout = open(outputfile,'w')
 fout.write ('==========Log Tile: Auto config backup==========\n')
 
+#-----send password to login------
 foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
-#foo.logfile = fout
+foo.logfile_read = fout
 foo.expect('.*ssword:')
 foo.sendline(password)
+
+#-----send command1--------
 foo.expect('>')
-fout.write(foo.before)
 foo.sendline(command1)
 foo.sendline('                                                       ')
-foo.expect('>')
-fout.write(foo.before)
 
+#-----send command1--------
+foo.expect('>')
+foo.sendline(command1)
+foo.sendline('                                                       ')
+
+-----end------------------
+foo.expect('>')
 fout.close()
 
 #foo.interact()
