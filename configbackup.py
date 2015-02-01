@@ -31,7 +31,10 @@ for command in commandlist:
 	foo.sendline('                                                       ')
 
 #-----end------------------
-foo.expect('pexpect.EOF')
+try:
+	foo.expect('pexpect.EOF')
+except EOF:
+	logging.info("End of the config\n")
 fout.close()
 
 #foo.interact()
