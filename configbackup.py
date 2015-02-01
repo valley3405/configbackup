@@ -31,7 +31,7 @@ foo.expect('>')
 foo.sendline(command1)
 foo.sendline('                                                       ')
 
------end------------------
+#-----end------------------
 foo.expect('>')
 fout.close()
 
