@@ -11,6 +11,6 @@ username = 'root'
 password = 'tjkj@1216'
 
 foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
-foo.expect('*.ssword:')
+foo.expect('.*ssword:')
 foo.sendline(password)
 foo.interact()
