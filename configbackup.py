@@ -10,7 +10,7 @@ outputfile = '1.out'
 host = '10.252.21.254'
 username = 'root'
 password = 'tjkj@1216'
-command1 = 'display current'
+commandlist = ('display current','dis ip int brief','dis ip route')
 
 fout = open(outputfile,'w')
 fout.write ('==========Log Tile: Auto config backup==========\n')
@@ -22,14 +22,10 @@ foo.expect('.*ssword:')
 foo.sendline(password)
 
 #-----send command1--------
-foo.expect('>')
-foo.sendline(command1)
-foo.sendline('                                                       ')
-
-#-----send command1--------
-foo.expect('>')
-foo.sendline(command1)
-foo.sendline('                                                       ')
+for command in commandlist:
+	foo.expect('>')
+	foo.sendline(command)
+	foo.sendline('                                                       ')
 
 #-----end------------------
 foo.expect('>')
