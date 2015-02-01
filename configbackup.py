@@ -4,7 +4,9 @@
 import pexpect  
 import sys  
 import time  
-import os  
+import os 
+import logging
+logging.basicConfig(level=logging.INFO) 
 
 outputfile = '1.out'
 host = '10.252.21.254'
@@ -24,7 +26,7 @@ foo.sendline(password)
 #-----send command1--------
 for command in commandlist:
 	foo.expect('>')
-	print command+'\n'
+	logging.info(command+'\n')
 	foo.sendline(command)
 	foo.sendline('                                                       ')
 
