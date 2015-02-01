@@ -23,4 +23,6 @@ foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
 
+fout.close()
+
 #foo.interact()
