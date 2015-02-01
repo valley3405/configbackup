@@ -28,7 +28,7 @@ for command in commandlist:
 	foo.sendline('                                                       ')
 
 #-----end------------------
-foo.expect('>')
+foo.expect('<OA_CO>')
 foo.sendline('  ')
 fout.close()
 
