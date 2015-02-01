@@ -10,7 +10,7 @@ outputfile = '1.out'
 host = '10.252.21.254'
 username = 'root'
 password = 'tjkj@1216'
-commandlist = ('display current','dis ip int brief','dis ip route')
+commandlist = ('display current','dis ip int brief','dis ip rout')
 
 fout = open(outputfile,'w')
 fout.write ('==========Log Tile: Auto config backup==========\n')
