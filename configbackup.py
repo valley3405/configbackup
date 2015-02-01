@@ -22,7 +22,8 @@ foo.sendline(password)
 foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
-foo.sendline(' ')
+foo.sendline('  ')
+print foo.before
 
 fout.close()
 
