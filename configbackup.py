@@ -29,6 +29,7 @@ for command in commandlist:
 
 #-----end------------------
 foo.expect('>')
+foo.sendline('  ')
 fout.close()
 
 #foo.interact()
