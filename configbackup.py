@@ -16,14 +16,15 @@ fout = open(outputfile,'w')
 fout.write ('==========Log Tile: Auto config backup==========\n')
 
 foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
-foo.logfile = fout
+#foo.logfile = fout
 foo.expect('.*ssword:')
 foo.sendline(password)
 foo.expect('>')
+fout.write(foo.before)
 foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
-print foo.before
+fout.write(foo.before)
 
 fout.close()
 
