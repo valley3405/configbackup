@@ -19,10 +19,10 @@ foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
 foo.logfile = fout
 foo.expect('.*ssword:')
 foo.sendline(password)
+foo.expect('>')
 foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
-foo.sendline('  ')
 print foo.before
 
 fout.close()
