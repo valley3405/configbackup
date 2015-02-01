@@ -23,7 +23,7 @@ foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
 
-p.expect(pexpect.EOF)
+foo.expect(pexpect.EOF)
 fout.close()
 
 #foo.interact()
