@@ -29,7 +29,7 @@ for command in commandlist:
 	foo.sendline('                                                       ')
 
 #-----end------------------
-foo.expect('pexpect.EOF')
+#foo.expect('pexpect.EOF')
 fout.close()
 
 #foo.interact()
