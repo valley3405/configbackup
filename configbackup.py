@@ -19,4 +19,4 @@ foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
 
-foo.expect()
+foo.interact()
