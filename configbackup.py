@@ -24,6 +24,7 @@ foo.sendline(password)
 #-----send command1--------
 for command in commandlist:
 	foo.expect('>')
+	print command+'\n'
 	foo.sendline(command)
 	foo.sendline('                                                       ')
 
