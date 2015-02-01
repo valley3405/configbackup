@@ -14,9 +14,8 @@ command1 = 'display current'
 foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
 foo.expect('.*ssword:')
 foo.sendline(password)
-#foo.interact()
 foo.sendline(command1)
 foo.sendline('                                                       ')
 foo.expect('>')
 
-foo.interact()
+#foo.interact()
