@@ -33,7 +33,7 @@ for command in commandlist:
 #-----end------------------
 try:
 	foo.expect('pexpect.EOF')
-except EOF:
+except pexpect.EOF:
 	logging.info("End of the config\n")
 fout.close()
 
