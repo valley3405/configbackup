@@ -17,7 +17,7 @@ fout.write ('==========Log Tile: Auto config backup==========\n')
 
 #-----send password to login------
 foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
-foo.logfile_read = sys.stdout
+foo.logfile_read = fout
 foo.expect('.*ssword:')
 foo.sendline(password)
 
