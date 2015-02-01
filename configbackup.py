@@ -17,7 +17,7 @@ fout.write ('==========Log Tile: Auto config backup==========\n')
 
 #-----send password to login------
 foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
-foo.logfile = sys.stdout
+foo.logfile_read = sys.stdout
 foo.expect('.*ssword:')
 foo.sendline(password)
 
@@ -29,10 +29,7 @@ for command in commandlist:
 	foo.sendline('                                                       ')
 
 #-----end------------------
-foo.expect('>')
-foo.sendline('                                                           ')
-foo.expect('>')
-foo.sendline('                                                           ')
+foo.expect('pexpect.EOF')
 fout.close()
 
 #foo.interact()
