@@ -29,8 +29,10 @@ for command in commandlist:
 	foo.sendline('                                                       ')
 
 #-----end------------------
-foo.expect('<OA_CO>')
-foo.sendline('  ')
+foo.expect('>')
+foo.sendline('                                                           ')
+foo.expect('>')
+foo.sendline('                                                           ')
 fout.close()
 
 #foo.interact()
