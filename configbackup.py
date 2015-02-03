@@ -6,7 +6,7 @@ import sys
 import time  
 import os 
 import logging
-logging.basicConfig(level=logging.ERROR) 
+logging.basicConfig(level=logging.INFO) 
 
 
 #host = '10.252.21.254'
