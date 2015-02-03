@@ -6,7 +6,7 @@ import sys
 import time  
 import os 
 import logging
-logging.basicConfig(level=logging.INFO) 
+logging.basicConfig(level=logging.ERROR) 
 
 outputfile = '1.out'
 host = '10.252.21.254'
