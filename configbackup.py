@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.ERROR)
 #password = 'tjkj@1216'
 #commandlist = ['dis ip int brief','dis ip rout','display current','quit']
 
-def configbackup(host, username, password, commandlist[]):
+def configbackup(host, username, password, commandlist):
 	outputfile = '1.out'
 	fout = open(outputfile,'w')
 	fout.write ('==========Log Tile: Auto config backup==========\n')
