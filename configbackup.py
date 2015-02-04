@@ -44,7 +44,7 @@ def configbackup(host, username, password, module):
 def main():
 	jsonf = open('hosts.conf')
 	hosts = json.loads(jsonf.read())
-	jsonf = open(modules.conf)
+	jsonf = open('modules.conf')
 	modules = json.loads(jsonf.read())
 
 	for host in hosts:
