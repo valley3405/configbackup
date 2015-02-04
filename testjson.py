@@ -23,5 +23,5 @@ print confstring
 decodedjson = json.loads(confstring)
 
 for module in decodedjson:
-	print module['h3c-sw1']
+	print module['h3c-sw1']['quitcommand']
 	
