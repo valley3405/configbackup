@@ -17,11 +17,11 @@ print type(decodedjson)
 print decodedjson[4]['key1']
 print decodedjson
 
-jsonf = open('hosts.conf')
+jsonf = open('modules.conf')
 confstring = jsonf.read()
 print confstring
 decodedjson = json.loads(confstring)
 
-for host in decodedjson:
-	print host['hostname']
-	print host['host']
+for module in decodedjson:
+	print module['h3c-sw1']
+	
