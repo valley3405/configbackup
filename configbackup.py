@@ -27,7 +27,7 @@ def configbackup(host, username, password, module):
 	#-----send password to login or accept the RSA KEYS
 	i = foo.expect(['\(yes\/no\)\?','.*ssword:'])
 	if i == 0:
-		foo.send('yes')
+		foo.sendline('yes')
 		foo.expect('.*password:')
 		foo.sendline(password)
 	else:
