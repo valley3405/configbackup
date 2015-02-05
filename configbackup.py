@@ -23,18 +23,27 @@ def configbackup(host, username, password, module):
 	#-----send password to login------
 	foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
 	foo.logfile_read = fout
-	foo.expect('.*ssword:')
-	foo.sendline(password)
+
+	#-----send password to login or accept the RSA KEYS
+	i = foo.expect(['yes/no','.*ssword:'])
+	if i == 0:
+		foo.send('yes')
+		foo.expect('.*password:')
+		foo.sendline(password)
+	else:
+		foo.sendline(password)
+	foo.expect(module['success_prompt'])
 	
 	#-----send commands--------
 	commandlist = module['commandlist']
 	for command in commandlist.keys():
-		foo.expect(commandlist[command])
 		logging.info(command+'\n')
 		foo.sendline(command)
 		foo.sendline('                                                       ')
+		foo.expect(commandlist[command])
 	
 	#-----end------------------
+	foo.sendline(module['quit'])
 	try:
 		foo.expect('pexpect.EOF')
 	except pexpect.EOF:
