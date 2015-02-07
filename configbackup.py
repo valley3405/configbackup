@@ -61,7 +61,7 @@ def main():
 
 	for host in hosts:
 		logging.info(host['hostip'])
-		configbackup(host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
+		#configbackup(host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 	
 		#configbackup('10.252.21.254', 'root', 'tjkj@1216', ['dis ip int brief','dis ip rout','display current','quit'])
 
