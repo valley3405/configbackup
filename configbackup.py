@@ -60,9 +60,6 @@ def main():
 	timestr = now.strftime("%Y-%m-%d_%H%M%S")
 	dirstr = "config/" + timestr
 
-	if not os.path.exists(dirstr):
-		os.makedirs(dirstr)
-		
 	for host in hosts:
 		logging.info(host['hostip'])
 		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
