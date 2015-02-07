@@ -7,6 +7,7 @@ import time
 import os 
 import logging
 import json
+import datetime
 logging.basicConfig(level=logging.INFO) 
 
 
@@ -15,12 +16,9 @@ logging.basicConfig(level=logging.INFO)
 #password = 'tjkj@1216'
 #commandlist = ['dis ip int brief','dis ip rout','display current','quit']
 
-def configbackup(hostname, host, username, password, module):
+def configbackup(dirstr, hostname, host, username, password, module):
 
-	if not os.path.exists(u"config"):
-		os.makedirs(u"config")
-		
-	outputfile = "config/" + hostname + '.txt'
+	outputfile = dirstr + "/" + hostname + '.txt'
 	fout = open(outputfile,'w')
 	fout.write ('==========Log Tile: Auto config backup==========\n')
 	
@@ -60,15 +58,16 @@ def main():
 	jsonf = open('modules.conf')
 	modules = json.loads(jsonf.read())
 
-	if not os.path.exists(u"config/办公区"):
-		os.makedirs(u"config/办公区")
-		
-	if not os.path.exists(u"config/开发测试区"):
-		os.makedirs(u"config/开发测试区")
+	now = datetime.datetime.now()
+	timestr = now.strftime("%Y-%m-%d_%H%M%S")
+	dirstr = "config/" + timestr
 
+	if not os.path.exists(dirstr):
+		os.makedirs(dirstr)
+		
 	for host in hosts:
 		logging.info(host['hostip'])
-		configbackup(host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
+		configbackup(dirstr, host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 	
 		
 
