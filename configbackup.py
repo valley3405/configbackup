@@ -10,15 +10,13 @@ import json
 import datetime
 logging.basicConfig(level=logging.INFO) 
 
+def configbackup(dirstr, area, hostname, host, username, password, module):
 
-#host = '10.252.21.254'
-#username = 'root'
-#password = 'tjkj@1216'
-#commandlist = ['dis ip int brief','dis ip rout','display current','quit']
-
-def configbackup(dirstr, hostname, host, username, password, module):
-
-	outputfile = dirstr + "/" + hostname + '.txt'
+	dirname = dirstr + area
+	if not os.path.exists(dirname):
+		os.makedirs(dirname)
+		
+	outputfile = dirname + "/" + hostname + '.txt'
 	fout = open(outputfile,'w')
 	fout.write ('==========Log Tile: Auto config backup==========\n')
 	
@@ -67,7 +65,7 @@ def main():
 		
 	for host in hosts:
 		logging.info(host['hostip'])
-		configbackup(dirstr, host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
+		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 	
 		
 
