@@ -16,7 +16,11 @@ logging.basicConfig(level=logging.INFO)
 #commandlist = ['dis ip int brief','dis ip rout','display current','quit']
 
 def configbackup(hostname, host, username, password, module):
-	outputfile = hostname
+
+	if not os.path.exists(u"config"):
+		os.makedirs(u"config")
+		
+	outputfile = "config/" + hostname + '.txt'
 	fout = open(outputfile,'w')
 	fout.write ('==========Log Tile: Auto config backup==========\n')
 	
