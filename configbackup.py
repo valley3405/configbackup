@@ -56,8 +56,11 @@ def main():
 	jsonf = open('modules.conf')
 	modules = json.loads(jsonf.read())
 
-	os.makedirs(u"config/办公区")
-	os.makedirs(u"config/开发测试区")
+	if !os.exists(u"config/办公区")
+		os.makedirs(u"config/办公区")
+		
+	if !os.exists(u"config/办公区")
+		os.makedirs(u"config/开发测试区")
 
 	for host in hosts:
 		logging.info(host['hostip'])
