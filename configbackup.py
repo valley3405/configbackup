@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 def configbackup(dirstr, area, hostname, host, username, password, module):
 
-	dirname = dirstr + area
+	dirname = dirstr + "/" + area
 	if not os.path.exists(dirname):
 		os.makedirs(dirname)
 		
