@@ -59,7 +59,7 @@ def main():
 
 	now = datetime.datetime.now()
 	timestr = now.strftime("%Y-%m-%d_%H%M%S")
-	dirstr = "config/" + timestr
+	dirstr = "configBackup.d/" + timestr
 
 	for host in hosts:
 		logging.info("--------Begin of backup of " + host['hostip'] + "-----------")
