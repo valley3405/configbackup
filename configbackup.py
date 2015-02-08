@@ -48,7 +48,7 @@ def configbackup(dirstr, area, hostname, host, username, password, module):
 	try:
 		foo.expect('pexpect.EOF')
 	except pexpect.EOF:
-		logging.info("End of the config\n")
+		logging.info("End of the configBackup!\n")
 	fout.close()
 
 def main():
