@@ -66,6 +66,7 @@ def main():
 		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 
 	#svn commit -m "timestr" configBackup.d/
+	os.system("/usr/bin/svn update configbackup.d/")
 	os.system("/usr/bin/svn commit -m '" + timestr + "' configBackup.d/")
 	
 		
