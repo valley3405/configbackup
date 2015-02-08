@@ -38,7 +38,7 @@ def configbackup(dirstr, area, hostname, host, username, password, module):
 	#convert {"a":1} to [("a",1)]
 	commandlist = module['commandlist'].items()
 	for command in commandlist:
-		logging.info(command[0]+'\n')
+		logging.info(command[0])
 		foo.sendline(command[0])
 		foo.sendline('                                                       ')
 		foo.expect(command[1])
@@ -62,7 +62,7 @@ def main():
 	dirstr = "config/" + timestr
 
 	for host in hosts:
-		logging.info(host['hostip'])
+		logging.info("--------Begin of backup of " + host['hostip'] + "-----------")
 		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 	
 		
