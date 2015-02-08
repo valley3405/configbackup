@@ -35,12 +35,13 @@ def configbackup(dirstr, area, hostname, host, username, password, module):
 	foo.expect(module['success_prompt'])
 	
 	#-----send commands--------
-	commandlist = module['commandlist']
-	for command in commandlist.keys():
-		logging.info(command+'\n')
-		foo.sendline(command)
+	#convert {"a":1} to [("a",1)]
+	commandlist = module['commandlist'].items()
+	for command in commandlist:
+		logging.info(command[0]+'\n')
+		foo.sendline(command[0])
 		foo.sendline('                                                       ')
-		foo.expect(commandlist[command])
+		foo.expect(command[1])
 	
 	#-----end------------------
 	foo.sendline(module['quit'])

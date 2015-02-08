@@ -1,11 +1,6 @@
 #!/usr/bin/python
 #-- coding:utf-8 --
-print "hello~world"
-print "test 1"
-print "test 2"
-print "test 3"
-print "test 4"
-print "test 5"
-print "test 6"
-print "test 7"
-print "test 8"
+
+import pexpect
+
+dic = {"a":1, "c":3, "b": 4}
