@@ -40,7 +40,7 @@ def configbackup(dirstr, area, hostname, host, username, password, module):
 	for command in commandlist:
 		logging.info(command[0])
 		foo.sendline(command[0])
-		foo.sendline('                                                       ')
+		foo.sendline('                                                                         ')
 		foo.expect(command[1])
 	
 	#-----end------------------
