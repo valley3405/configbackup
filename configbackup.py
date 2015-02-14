@@ -51,7 +51,9 @@ def configbackup(dirstr, area, hostname, host, username, password, module):
 		logging.info("End of the configBackup!\n")
 	fout.close()
 
-def main():
+
+
+if __name__ == '__main__':
 	jsonf = open('hosts.conf')
 	hosts = json.loads(jsonf.read())
 	jsonf = open('modules.conf')
@@ -69,8 +71,3 @@ def main():
 	os.system("/usr/bin/svn update configBackup.d/")
 	os.system("/usr/bin/svn add configBackup.d/*")
 	os.system("/usr/bin/svn commit -m '" + timestr + "' configBackup.d/")
-	
-		
-
-if __name__ == '__main__':
-	main()
