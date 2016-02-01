@@ -1,2 +1,4 @@
 *.bat
 backup.d
+configBackup.d
+1.out
