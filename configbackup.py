@@ -54,20 +54,22 @@ def configbackup(dirstr, area, hostname, host, username, password, module):
 
 
 if __name__ == '__main__':
-	jsonf = open('hosts.conf')
+
+	prefix = '/root/configbackup/'
+	jsonf = open(prefix + 'hosts.conf')
 	hosts = json.loads(jsonf.read())
-	jsonf = open('modules.conf')
+	jsonf = open(prefix + 'modules.conf')
 	modules = json.loads(jsonf.read())
 
 	now = datetime.datetime.now()
 	timestr = now.strftime("%Y-%m-%d_%H%M%S")
-	dirstr = "configBackup.d/" + timestr
+	dirstr = prefix + "configBackup.d/" + timestr
 
 	for host in hosts:
 		logging.info("--------Begin of backup of " + host['hostip'] + "-----------")
 		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 
 	#svn commit -m "timestr" configBackup.d/
-	os.system("/usr/bin/svn update configBackup.d/")
-	os.system("/usr/bin/svn add configBackup.d/*")
-	os.system("/usr/bin/svn commit -m '" + timestr + "' configBackup.d/")
+	os.system("/usr/bin/svn update "+ prefix + "configBackup.d/")
+	os.system("/usr/bin/svn add "+dirstr)
+	os.system("/usr/bin/svn commit -m '" + timestr +"' "+prefix+"configBackup.d/")
