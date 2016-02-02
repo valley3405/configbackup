@@ -1,7 +1,6 @@
 #!/usr/bin/python
 #-- coding:utf-8 --
 #author:valley3405
-#author:wangwu
   
 import pexpect  
 import sys  
