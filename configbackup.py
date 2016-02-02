@@ -2,6 +2,7 @@
 #-- coding:utf-8 --
 #author:valley
 #author:valley3405
+#author:wangwu
   
 import pexpect  
 import sys  
