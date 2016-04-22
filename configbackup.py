@@ -12,14 +12,17 @@ logging.basicConfig(level=logging.INFO)
 
 def configbackup(dirstr, area, hostname, host, username, password, module):
 
+	#检查是否存在对应备份目录，如不存在则新建目录
 	dirname = dirstr + "/" + area
 	if not os.path.exists(dirname):
 		os.makedirs(dirname)
-		
+	
+	#在指定备份目录新建备份文件	
 	outputfile = dirname + "/" + hostname + '.txt'
 	fout = open(outputfile,'w')
 	fout.write ('==========Log Tile: Auto config backup==========\n')
 	
+	#使用pexpect库，执行ssh登录过程
 	#-----send password to login------
 	foo = pexpect.spawn('/usr/bin/ssh %s@%s' % (username, host))
 	foo.logfile_read = fout
