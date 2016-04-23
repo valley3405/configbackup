@@ -75,8 +75,13 @@ if __name__ == '__main__':
 		logging.info("--------Begin of backup of " + host['hostip'] + "-----------")
 		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 
-	#执行操作系统指令svn，将备份文件更新入svn服务器
+	#执行操作系统指令tar,打包后执行svn，将备份文件更新入svn服务器
 	#svn commit -m "timestr" configBackup.d/
-	os.system("/usr/bin/svn update "+ prefix + "configBackup.d/")
-	os.system("/usr/bin/svn add "+dirstr)
-	os.system("/usr/bin/svn commit -m '" + timestr +"' "+prefix+"configBackup.d/")
+	logging.info("start zip the config files....................")
+	os.system("/bin/tar czvf configBackup.d/" + timestr + ".tar.gz" + " configBackup.d/" + timestr + "/")
+	logging.info("start deleting the unzip files.................")
+	os.system("/bin/rm -rf configBackup.d/" + timestr + "/")
+	logging.info("Work is done, enjoy it!!!!!")
+	#os.system("/usr/bin/svn update "+ prefix + "configBackup.d/")
+	#os.system("/usr/bin/svn add "+dirstr)
+	#os.system("/usr/bin/svn commit -m '" + timestr +"' "+prefix+"configBackup.d/")
