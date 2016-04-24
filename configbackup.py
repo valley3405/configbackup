@@ -68,7 +68,7 @@ if __name__ == '__main__':
 	#取得当前时间，并组成由备份主目录+当前时间组合成的备份目录字符串，用于存放备份文件
 	now = datetime.datetime.now()
 	timestr = now.strftime("%Y-%m-%d_%H%M%S")
-	dirstr = prefix + "configBackup.d/" + timestr
+	dirstr = prefix + "oa-backup/" + timestr
 
 	#枚举hosts，针对每台设备，调用函数configbackup,执行对应命令集，保存结果，在指定目录生成备份文件
 	for host in hosts:
@@ -76,12 +76,22 @@ if __name__ == '__main__':
 		configbackup(dirstr, host['area'], host['hostname'], host['hostip'], host['username'], host['password'], modules[0][host['modulename']]) 
 
 	#执行操作系统指令tar,打包后执行svn，将备份文件更新入svn服务器
-	#svn commit -m "timestr" configBackup.d/
+	
 	logging.info("start zip the config files....................")
-	os.system("/bin/tar czvf configBackup.d/" + timestr + ".tar.gz" + " configBackup.d/" + timestr + "/")
+	logging.info("/bin/tar czvf "+prefix+"oa-backup/" + timestr + ".tar.gz " +  prefix + "oa-backup/" + timestr + "/")
+	os.system("/bin/tar czvf "+prefix+"oa-backup/" + timestr + ".tar.gz " +  prefix + "oa-backup/" + timestr + "/")
+	
 	logging.info("start deleting the unzip files.................")
-	os.system("/bin/rm -rf configBackup.d/" + timestr + "/")
+	logging.info("/bin/rm -rf  "+prefix+"oa-backup/" + timestr + "/")
+	os.system("/bin/rm -rf  "+prefix+"oa-backup/" + timestr + "/")
 	logging.info("Work is done, enjoy it!!!!!")
-	#os.system("/usr/bin/svn update "+ prefix + "configBackup.d/")
-	#os.system("/usr/bin/svn add "+dirstr)
-	#os.system("/usr/bin/svn commit -m '" + timestr +"' "+prefix+"configBackup.d/")
+
+	#svn commit -m "timestr" oa-backup/
+	logging.info("/usr/local/bin/svn update "+ prefix + "oa-backup/")
+	os.system("/usr/local/bin/svn update "+ prefix + "oa-backup/")
+
+	logging.info("/usr/local/bin/svn add "+prefix+"oa-backup/"+ timestr + ".tar.gz")
+	os.system("/usr/local/bin/svn add "+prefix+"oa-backup/"+ timestr + ".tar.gz")
+
+	logging.info("/usr/local/bin/svn commit -m '" + timestr +"' "+prefix+"oa-backup/")
+	os.system("/usr/local/bin/svn commit -m '" + timestr +"' "+prefix+"oa-backup/")
